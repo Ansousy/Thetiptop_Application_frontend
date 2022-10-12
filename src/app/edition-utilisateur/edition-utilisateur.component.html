@@ -1,0 +1,55 @@
+<div class="container bas">
+  <div class="row ">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="col-sm-12 col-md-12 col-lg-7 mx-auto pr-2 pl-2">
+          <div class="row m-t-20 m-b-20 ">
+            <div class="col-md-6">
+              <h1 class="card-title">Edition utilisateur</h1>
+
+              <div class="form-group">
+                <label >Nom</label>
+                <input type="text" class="form-control" [(ngModel)]="userinfo.nom" #nom="ngModel" required />
+                <div *ngIf="nom.invalid">
+                  <div *ngIf="nom.errors.required"> * Champs requis </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label >Prénom</label>
+                <input type="text" class="form-control"  [(ngModel)]="userinfo.prenom" #prenom="ngModel"
+                       required />
+                <div *ngIf="prenom.invalid">
+                  <div *ngIf="prenom.errors.required"> * Champs requis </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label >Login</label>
+                <input type="email" class="form-control"  [(ngModel)]="userinfo.login" #login="ngModel" required/>
+                <div *ngIf="login.invalid">
+                  <div *ngIf="login.errors.required"> * Champs requis </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Roles</label>
+                <select  name="role" [(ngModel)]="userinfo.role"  class="form-control">
+                  <option value="USER">Utilisateur</option>
+                  <option value="ADMIN">Administrateur</option>
+                  <option value="EMP">Employe</option>
+                </select>
+              </div>
+
+              <button   (click)="updateUtilisateur()" class="btn btn-space  btn-primary">Valider</button>
+              <a routerLink="/admin/liste-utilisateurs"><button type = "button" class="btn btn-space btn-secondary ">Retour</button> </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,83 @@
+<!-- ======= Header ======= -->
+<header id="header" class=" d-flex align-items-center header-scrolled">
+  <div class="container">
+    <nav class="navbar  navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a href="home">
+          <img src="assets/img/logoThétiptop.PNG" title="logo, thé bio" alt="logo thetiptop, thé bio, thé infusion" class="img-fluid logo" style="margin-right: 2rem">
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div  class="navbar-nav" routerLinkActive="active">
+            <a class="nav-item nav-link active"  *ngIf="!authority"  routerLink="/home">Accueil</a>
+            <a class="nav-item nav-link active" *ngIf="authority"  [routerLink]="accountLink(authority)">{{page}}</a>
+            <a class="nav-item nav-link" *ngIf="!authority"  [routerLink]="['/home/#about']" fragment="about">Le Jeu-concours</a>
+            <a class="nav-item nav-link" *ngIf="!authority"  [routerLink]="['/home/#portfolio']" fragment="portfolio">Les Gains</a>
+            <a class="nav-item nav-link" *ngIf="!authority"  routerLink="auth/login">Connexion</a>
+            <a class="nav-item nav-link"  *ngIf="!authority" routerLink="auth/signup">Inscription</a>
+            <a class="nav-item nav-link" routerLink="user/gain" *ngIf="authority === 'user'">Gains</a>
+            <a class="nav-item nav-link" routerLink="admin/liste-utilisateurs" *ngIf="authority === 'admin' ">Utilisateur</a>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle clickable" data-bs-toggle="dropdown" *ngIf="authority === 'user'">Profil</a>
+              <div class="dropdown-menu">
+                <a  class="dropdown-item clickable" (click)="editionProfil()">Edition</a>
+                <a  class="dropdown-item clickable" (click)="suppressionCompte()">Suppression</a>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="authority"  class="navbar-nav ms-auto clickable">
+            <a class="nav-item nav-link" (click)="logout()" >Déconnexion</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div> <!-- container -->
+</header><!-- End Header -->
+<router-outlet></router-outlet>
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 footer-contact">
+          <h4 title="thetiptop gagnez des thés">TheTipTop</h4>
+          <p>Site de jeu-concours de thé</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-links">
+          <p>Liens utiles</p>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a [routerLink]="['/home/#about']" fragment="about">Le Jeu-concours</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a [routerLink]="['/home/#portfolio']" fragment="portfolio">Les gains</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="/reglements-du-jeu">Les réglements du jeu </a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="/donnees-personnelles">CGU</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="/mentions-legales">Mentions légales</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-links">
+          <p>Suivez nous dans les réseaux sociaux</p>
+          <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.facebook.com/thetiptop.fr" target="_blank" style="color:#fff;" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-md-flex py-4">
+    <div class="me-md-auto text-center text-md-start">
+      <div class="copyright">
+        &copy; Copyright <strong><span>ThéTipTop</span></strong> | Design Elhadji Sy
+      </div>
+    </div>
+  </div>
+</footer><!-- End Footer -->

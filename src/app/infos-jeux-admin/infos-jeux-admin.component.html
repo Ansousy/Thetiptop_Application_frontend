@@ -1,0 +1,220 @@
+<div class="row">
+  <!-- Nombre de participant -->
+  <div class="col-lg-3 col-md-6 mb-1">
+    <div class="card border-left-primary ">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+              nombre de participants
+            </div>
+            <div class="h5 mb-0 fw-bold text-gray-800"> {{nombreParticipant}} </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-user fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tickets restant -->
+  <div class="col-lg-3 col-md-6 mb-1">
+    <div class="card border-left-info shadow">
+      <div class="card-body">
+        <div class="row  align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs fw-bold text-info text-uppercase mb-1">Tickets disponibles
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div
+                  class="h5 mb-0 mr-3 fw-bold text-gray-800">{{this.ticketPourcentage}} %
+                </div>
+              </div>
+              <div class="col  mr-2">
+                <div class="progress-sm">
+                  <progress-bar [progress]="ticketPourcentage"
+                                [color-degraded]="{'0': '#fd8c8e',  '15': '#f9c3d3', '25': '#36b9cc'}"
+                  >
+                  </progress-bar>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-ticket-alt fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jours restants -->
+  <div class="col-lg-3 col-md-6 mb-1">
+    <div class="card border-left-success ">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col mr-2">
+            <div class="text-success fw-bold text-primary text-uppercase mb-1">
+              Jours restants
+            </div>
+            <div class="h5 mb-0 fw-bold text-gray-800"><span>{{this.joursRestant + 1 }}</span> j</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar-day fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generer Tickets -->
+  <div class="col-lg-3 col-md-6 mb-1">
+    <div class="card border-left-info ">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs fw-bold text-info   text-uppercase mb-1">
+              générer tickets
+            </div>
+            <div  class="h5 mb-0 fw-bold text-gray-800">
+              <input [disabled]="totalTicket > 25" type="button" (click)="genererTouslesTickets()" value="Générer" class="btn btn-xs btn-primary"/>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Envoyer campagne  -->
+  <div   class="col-lg-4 col-md-6 mb-1">
+    <div class="card border-left-campagne ">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col mr-2">
+            <div class="text-campagne fw-bold text-uppercase mb-1">
+              Envoyer Campagne
+            </div>
+            <div  class="h5 mb-0 fw-bold text-gray-800">
+              <input type="button" (click)="envoyerCampagne()" value="Envoyer" class="btn btn-xs btn-dark" />
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-envelope  fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tirage au sort -->
+  <div   class="col-lg-4 col-md-6 mb-1">
+    <div class="card border-left-drawing ">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col mr-2">
+            <div class="text-drawing fw-bold text-uppercase mb-1">
+              gros lot
+            </div>
+            <div  class="h5 mb-0 fw-bold text-gray-800">
+              <input type="button" (click)="getDrawingLotUser()" value="Tirage" class="btn btn-xs btn-warning"/>
+            </div>
+
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-random  fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Vainqueur -->
+  <div   class="col-lg-4 col-md-6 mb-1">
+    <div class="card border-left-tirage ">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col mr-2">
+            <div class="text-tirage fw-bold text-uppercase mb-1">
+              Vainqueur
+            </div>
+            <div  class="h5 mb-0 fw-bold text-gray-800">
+              <input type="button" (click)="gagnantUnAnDeThe()" value="Afficher" class="btn btn-xs btn-success"
+                     data-bs-toggle="modal"
+                     data-bs-target="#exampleModal1"/>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-crown  fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal  -->
+  <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel" >Le grand gagnant d'une valeur de 360 euros et
+            d'un an de thé :</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngIf="gain">
+          <div>
+            <div><label class="form-label"> Monsieur : </label>
+              {{ gain.user.nom + " " + gain.user.prenom }}
+            </div>
+            <div>
+              <label class="form-label"> Email : </label> {{gain.user.login }}
+            </div>
+            <div>
+              <label class="form-label"> Téléphone : </label> {{gain.user.telephone }}
+            </div>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  <!-- Modal  affcher gagnant-->
+  <div  class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel1" >Le grand gagnant d'une valeur de 360 euros et
+            d'un an de thé :</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngIf="!user">
+         Effectuez un tirage pour afficher le vainqueur
+        </div>
+        <div class="modal-body" *ngFor="let client of user">
+          <div>
+            <div><label class="form-label"> Monsieur : </label>
+              {{ client.nom + " " + client.prenom }}
+            </div>
+            <div>
+              <label class="form-label"> Email : </label> {{client.login }}
+            </div>
+            <div>
+              <label class="form-label"> Téléphone : </label> {{client.telephone }}
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

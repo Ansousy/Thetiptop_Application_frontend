@@ -1,0 +1,92 @@
+
+<div class=" container bas">
+  <div class="row " >
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto pr-2 pl-2">
+      <div class="card  my-5">
+        <div class="card-body">
+          <h1 title="Inscription" class="card-title text-center text-uppercase">Inscription </h1>
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group mb-3">
+              <label class="form-label" for="nom" >Nom</label>
+              <input type="text" class="form-control" name="nom" [(ngModel)]="form.nom" #nom="ngModel"
+                     placeholder="Nom" required  minlength="2"/>
+              <div *ngIf="f.submitted && nom.invalid">
+                <div *ngIf="nom.errors.required"> * Champs requis </div>
+                <div *ngIf="nom.errors.minlength"> * minimum 2 caractéres </div>
+
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label"  for="prenom" >Prénom</label>
+              <input type="text" class="form-control" name="prenom" [(ngModel)]="form.prenom" #prenom="ngModel"
+                     placeholder="Prénom"  minlength="2" required />
+              <div *ngIf="f.submitted && prenom.invalid">
+                <div *ngIf="prenom.errors.required"> * Champs requis </div>
+                <div *ngIf="prenom.errors.minlength"> * minimum 2 caractéres </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label"  for="telephone" >Téléphone</label>
+              <input type="text" class="form-control" name="prenom" [(ngModel)]="form.telephone" #telephone="ngModel"
+                     required  placeholder="Numéro téléphone"/>
+              <div *ngIf="f.submitted && telephone.invalid">
+                <div *ngIf="telephone.errors.required"> * Champs requis </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label"  for="age" >Age</label>
+              <input type="number" min="5" class="form-control" name="age" [(ngModel)]="form.age" #age="ngModel"
+                     placeholder="age" required />
+              <div *ngIf="f.submitted && age.invalid">
+                <div *ngIf="age.errors.required"> * Champs requis, veuillez ajouter votre âge </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label"  for="login" >Login</label>
+              <input type="email" class="form-control" name="login" [(ngModel)]="form.login" #login="ngModel"
+                     placeholder="email" required  />
+              <div *ngIf="f.submitted && login.invalid">
+                <div *ngIf="login.errors.required">* champs requis</div>
+                <div *ngIf="login.errors.login">Email invalide </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label"  for="password" >Password</label>
+              <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+                     required minlength="6"  placeholder="mot de passe"/>
+              <div *ngIf="f.submitted && password.invalid">
+                <div *ngIf="password.errors.required">* mot de passe éxigé</div>
+                <div *ngIf="password.errors.minlength"> * minimum 6 caracteres</div>
+              </div>
+            </div>
+            <div class="form-check form-group mb-3">
+              <input  class="form-check" type="checkbox" (click)="setCookie('CONSENT-STATUS','ACCEPT',1)" name="accept" [(ngModel)]="form.accept" #accept="ngModel" class="form-check-input"  required>
+              <label class="form-check-label text-reinitialisation" >Accepter les CGU. Vous declarez avoir plus de 16 ans ou vous avez l'autorisation parentale pour jouer à ce jeu.
+              </label>
+              <div *ngIf="f.submitted && accept.invalid">
+                <div *ngIf="accept.errors.required">* Veuillez accepter les CGU</div>
+              </div>
+            </div>
+            <div class="form-group mb-3 d-grid gap-2">
+              <button class="btn btn-primary btn-block btn-lg">Créer mon compte</button>
+              <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-danger mt-1">
+                <i class="bi-exclamation-octagon-fill" style="color: #e80909"></i>
+                 {{ errorMessage }}
+              </div>
+
+              <div *ngIf="f.submitted && isValid" class="alert alert-danger mt-1" role="alert">
+                <div *ngFor="let err of validateError">
+                  <i class="bi-exclamation-octagon-fill" style="color: #e80909"></i>
+                  {{ err.msg }}
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

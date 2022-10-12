@@ -1,0 +1,124 @@
+  <div class="row">
+      <!-- Nombre de participant -->
+      <div class="col-lg-3 col-md-6 mb-2">
+        <div class="card border-left-primary ">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+                  nombre de participants </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{nombreParticipant}} </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-user fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tickets restant -->
+      <div class="col-lg-3 col-md-6 mb-2">
+        <div class="card border-left-info shadow">
+          <div class="card-body">
+            <div class="row  align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs fw-bold text-info text-uppercase mb-1">Tickets disponibles
+                </div>
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{this.ticketPourcentage}} %</div>
+                  </div>
+                  <div class="col  mr-2">
+                    <div class="progress-sm">
+                      <progress-bar [progress]="ticketPourcentage"
+                                    [color-degraded]="{'0': '#fd8c8e',  '15': '#f9c3d3', '25': '#36b9cc'}"
+                                    >
+                      </progress-bar>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-ticket-alt fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Jours restants -->
+      <div class="col-lg-3 col-md-6 mb-2">
+        <div class="card border-left-success ">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col mr-2">
+                <div class="text-success fw-bold text-primary text-uppercase mb-1">
+                  Jours restants </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  <span>{{this.joursRestant + 1 }}</span> j
+
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-calendar-day fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Réglement du jeu  -->
+      <div class="col-lg-3 col-md-6 mb-2">
+        <div class="card border-left-drawing ">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col mr-2">
+                <div class="text-drawing fw-bold text-primary text-uppercase mb-1">
+                  Réglements du jeu </div>
+                <button  class="btn btn-space btn-warning"
+                         data-bs-toggle="modal"
+                         data-bs-target="#exampleModal1">
+                  Consulter
+                </button>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-gamepad fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Modal  affficher réglement jeu-concours -->
+  <div  class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 title="Le jeu-concours" class="modal-title" id="exampleModalLabel1" class="upper">Le Jeu-concours </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2 title="les offres à gagner"> 1. Les offres à gagner </h2>
+          <div> - un infuseur à thé</div>
+          <div> - une boite de 100g d’un thé détox ou d’infusion</div>
+          <div> - une boite de 100g d’un thé signature</div>
+          <div> - un coffret découverte d’une valeur de 39€</div>
+          <div> - un coffret découverte d’une valeur de 69€</div>
+          <div> - Un an de thé gratuit pour une valeur de 360 euro
+            lors du grand tirage au sort final
+          </div>
+          <hr/>
+          <h3 title="Tentatives frauduleuses">2. Grand Tirage au sort</h3>
+          <div>Un an de thé gratuit pour une valeur de 360 euro
+            lors du grand tirage au sort final </div>
+          <br>
+          <h4 title="Bonne chance"> Bonne chance !!!</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

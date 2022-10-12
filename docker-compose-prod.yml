@@ -1,0 +1,31 @@
+version: '3.8'
+networks:
+  private:
+    external:
+      name: private
+  web:
+    external:
+      name: web
+
+services:
+  #----------------------
+  #--- FRONTEND SSR -----
+  #----------------------
+  prod-frontend:
+    image: elmas19/frontend-prod:2.0.1-rc2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: frontend-prod
+    networks:
+      - web
+      - private
+    user: 0:0
+    environment:
+      ENV_NAME: prod
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.prod-frontend.entrypoints=websecure"
+      - traefik.http.routers.prod-frontend.rule=Host(`dsp-archiweb21-ah-es-ag-hk.fr`)
+      - traefik.http.services.prod-frontend.loadbalancer.server.port=4000
+      - "traefik.http.routers.prod-frontend.tls.certresolver=lets-encr"
+    restart: always

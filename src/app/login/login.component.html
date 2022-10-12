@@ -1,0 +1,55 @@
+<div class="container bas">
+  <div class="row">
+    <div class="col-sm-9 col-md-8 col-lg-5 mx-auto pr-2 pl-2">
+      <div class="card  my-5">
+        <div class="card-body">
+          <h1 title="connexion" class="card-title text-center text-uppercase">Connexion </h1>
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group mb-3">
+              <label class="form-label" for="login">Login</label>
+              <input type="text" class="form-control" name="login" [(ngModel)]="form.login" #login="ngModel"
+                     required placeholder="adresse email"/>
+              <div *ngIf="f.submitted && login.invalid">
+                <div *ngIf="login.errors.required">*adresse email requis</div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label" for="password">Mot de passe</label>
+              <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
+                     #password="ngModel"
+                     required minlength="6" placeholder="mot de passe"/>
+              <div *ngIf="f.submitted && password.invalid">
+                <div *ngIf="password.errors.required">*Mot de passe requis</div>
+                <div *ngIf="password.errors.minlength">le mot de passe doit être supérieur à 6 caractéres</div>
+              </div>
+            </div>
+            <div class="form-group d-grid gap-2">
+              <button class="btn btn-primary btn-block btn-lg">Me Connecter</button>
+            </div>
+            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger mt-3">
+              <i class="bi-exclamation-octagon-fill" style="color: #e80909"></i>
+              {{errorMessage}}
+            </div>
+            <hr/>
+            <p>
+              <span class="mr-2">Disposez vous d'un compte?</span>&nbsp;&nbsp;
+              <span class="">
+                <a routerLink="/auth/mot-de-passe-oublier" style="text-decoration: none;color:#363b31;font-weight: bold">mot de passe oublier ?</a>
+              </span>
+            </p>
+            <div class="form-group d-grid gap-2">
+              <button class="btn btn-lg btn-formulaire btn-block " (click)="Inscription()" type="submit"><i
+                class="fas fa-user-plus mr-2"></i> Inscription via Formulaire
+              </button>
+              <button class="btn btn-lg btn-google btn-block " (click)="loginWithGoogle()"><i
+                class="fab fa-google mr-2"></i> <span> Inscription via Google</span>
+              </button>
+              <button class="btn btn-lg btn-facebook btn-block" (click)="loginWithFacebook()">
+                <i class="fab fa-facebook-f mr-2"></i> Inscription via Facebook </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

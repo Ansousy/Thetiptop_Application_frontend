@@ -1,0 +1,82 @@
+<div class="container bas">
+  <div class="row ">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="col-sm-12 col-md-12 col-lg-9 mx-auto pr-2 pl-2">
+          <div>
+            <button  (click)="onCreateUser()" class="clickable btn btn-primary">
+              ajouter utilisateur  <i class="fas fa-plus "></i>
+            </button>
+
+          </div>
+
+          <div class="row m-t-20 m-b-20 ">
+            <div class="col-md-6">
+              <h1 title="liste des utilisateurs" class="card-title">Liste des utilisateurs</h1>
+            </div>
+            <div class="col-md-6" >
+              <div class="input-group">
+                <input class="form-control py-2" type="text" [(ngModel)]="nom"
+                       placeholder="Rechercher par nom ">
+                    <span class="input-group-text bg-transparent clickable" (click)="filtrerParNom()">
+                      <span>filtrer</span>
+                    </span>
+                    <span class="input-group-text bg-transparent clickable">
+                      <i class="fa fa-sync fa-lg " (click)="deleteFilter()"></i>
+                    </span>
+              </div>
+            </div>
+          </div>
+          <div class="responsive-table-line" style="margin:0px auto;">
+            <table>
+              <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let user of users?.users  | paginate: {itemsPerPage:size,currentPage:page,totalItems:counts}">
+                <td data-title="Nom">{{user.nom}}</td>
+                <td data-title="Prénom">{{user.prenom}}</td>
+                <td data-title="Téléphone">{{user.telephone}}</td>
+                <td data-title="Age">{{user.age}}</td>
+                <td data-title="Email">{{user.login}}</td>
+                <td data-title="Role">{{user.roles[0].name}}</td>
+                <td data-title="Action" colspan="2">
+                  <a (click)="onUpdateUser(user)" class="clickable action-space" >
+                    <span title="supprimer un utilisateur"></span>
+                    <i class="fas fa-edit fa-action"></i>
+                  </a>
+                  <a (click)="onDeleteUser(user)" class="clickable action-space">
+                    <span title="supprimer un utilisateur"></span>
+                    <i class="fas fa-trash fa-action"></i>
+                  </a>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="mt-4 pagination">
+              <pagination-controls (pageChange)="handlePageChange($event)"
+                                   responsive="true"
+                                   previousLabel="Précédent"
+                                   nextLabel="Suivant"
+                                   responsive="true">
+
+              </pagination-controls>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

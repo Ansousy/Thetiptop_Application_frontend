@@ -1,0 +1,69 @@
+<!--<h4>Content from Server</h4>
+<div *ngIf="userInfo">
+    <p>Name: <strong>{{userInfo.nom}}</strong></p>
+    <p>Email: <strong>{{userInfo.login}}</strong></p>
+</div>
+{{board}}
+{{errorMessage}}-->
+
+<div class="container bas">
+  <div class="row ">
+      <!-- Draggable Without Images card start -->
+      <div class="card">
+        <div class="card-body">
+          <div class="col-sm-12 col-md-12 col-lg-9 mx-auto pr-2 pl-2">
+          <div class="row m-t-20 m-b-20 ">
+                <div class="col-md-6">
+                  <h1 title="historique des gains" class="card-title">Historique des Gains</h1>
+                </div>
+                <div class="col-md-6" >
+                  <div class="input-group">
+                    <input class="form-control py-2" type="text" [(ngModel)]="libelle"
+                           placeholder="Rechercher par libellé ">
+                    <span class="input-group-text bg-transparent clickable" (click)="filtrerLibelle()">
+                      filtrer
+                    </span>
+                    <span class="input-group-text bg-transparent clickable">
+                      <i class="fa fa-sync fa-lg " (click)="deleteFilter()"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="responsive-table-line" style="margin:0px auto;">
+                <table>
+                  <thead>
+                  <tr>
+                    <th>Numéro de ticket</th>
+                      <th>Libellé</th>
+                      <th>Date</th>
+                      <th (click)="sort('statut')">Statut &nbsp;&nbsp;<i class="fa fa-sort"></i> </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let gain of gains?.gains | orderBy: cle : reverse |
+                      paginate: {itemsPerPage:size,currentPage:page,totalItems:counts} ">
+                      <td data-title="Ticket">{{gain.ticket.numero_ticket}}</td>
+                      <td data-title="Libellé">{{gain.libelle}}</td>
+                      <td data-title="Date">{{gain.date | date:"dd-MM-yyy HH:mm:ss"}}</td>
+                      <td data-title="Statut" *ngIf="gain.reception == 1" ><span class="livrer"> Réceptionné</span></td>
+                      <td data-title="Statut" *ngIf="gain.reception == 0" ><span class="non-livrer">Non Réceptionné </span>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="mt-4 pagination">
+                  <pagination-controls (pageChange)="handlePageChange($event)"
+                                       responsive="true"
+                                       previousLabel="Précédent"
+                                       nextLabel="Suivant"
+                                       responsive="true">
+
+                  </pagination-controls>
+                </div>
+
+              </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

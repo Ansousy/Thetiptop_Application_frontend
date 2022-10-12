@@ -1,0 +1,118 @@
+<!--<h4>Content from Server</h4>
+<div *ngIf="userInfo">
+    <p>Name: <strong>{{userInfo.nom}}</strong></p>
+    <p>Email: <strong>{{userInfo.login}}</strong></p>
+</div>
+{{board}}
+{{errorMessage}}-->
+
+
+<div class="container bas">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <!--<div class="col-sm-12 col-md-12 col-lg-6 mx-auto pr-2 pl-2">-->
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto pr-2 pl-2">
+          <div [ngClass]="exist() ? 'activated': 'deactivated'">
+            <!--<div class="col-sm-12 col-md-12 col-lg-6 mx-auto pr-2 pl-2">-->
+            <div class="alert alert-info alert-dismissible fade show bg-white mt-2" role="alert">
+              <i class="bi-info-circle-fill" style="color: #08ccf6"> </i> Bienvenu(e)
+              <strong class="text-uppercase m-2">
+                {{userInfo.nom}} .
+              </strong>
+              Veuillez completer svp votre profil en cliquant sur ce boutton. &nbsp;&nbsp;
+              <button type="button" class="btn btn-space btn-success"
+                      data-bs-toggle="modal"
+                      data-bs-target="#completerProfil">
+                Completer
+              </button>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+          <app-infos-game></app-infos-game>
+          <div class="col-sm-12 col-md-6 col-lg-3 mx-auto pr-2 pl-2">
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="numero_ticket">Entrez votre numéro de ticket</label>
+                <input type="text" name="numero_ticket" maxlength="10" [(ngModel)]="form.ticket"
+                       #numero_ticket="ngModel" minlength="9"
+                       placeholder="Entrez le numéro de ticket" class="form-control" required/>
+                <div *ngIf="f.submitted && numero_ticket.invalid">
+                  <div *ngIf="numero_ticket.errors.required" class="mt-2 mb-2">* Le numéro de ticket est obligatoire
+                  </div>
+                  <div *ngIf="numero_ticket.errors.minlength" class="mt-2 mb-2">* Le numéro de ticket doit comporter 10
+                    caractéres
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6 col-sm-12 ">
+                  <button class="btn form-control btn-jouer ">Jouer</button>
+                </div>
+                <div class="col-md-6 mtop-2 col-sm-12 ">
+                  <button type="reset" class="btn form-control btn-annuler">Annuler</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  completer profil utilisateur-->
+<div class="modal fade" id="completerProfil" tabindex="-1" role="dialog" aria-labelledby="completerProfilLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title upper" id="completerProfilLabel">Completer votre profil</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="form-group mb-3">
+            <label class="form-label" for="telephone">Téléphone</label>
+            <input type="text" class="form-control" ngModel name="telephone" [(ngModel)]="userInfo.telephone"
+                   #telephone="ngModel" required="required" placeholder="Numéro téléphone"/>
+            <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)">
+              <div *ngIf="telephone.errors.required"> * Champs requis, veuillez ajouter le numéro de téléphone</div>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label" for="age">Age</label>
+            <input type="number" min="5" class="form-control" [(ngModel)]="userInfo.age" name="age" #age="ngModel"
+                   placeholder="age" required="required"/>
+            <div *ngIf="age.invalid && (age.dirty || age.touched)">
+              <div *ngIf="age.errors.required"> * Champs requis, veuillez ajouter votre âge</div>
+            </div>
+          </div>
+          <div *ngIf="success">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="bi-check-circle-fill" style="color:#198754"></i>
+              {{this.message}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+          <div *ngIf="isfailed">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <i class="bi-exclamation-triangle-fill" style="color:#ecdb40 "></i>
+              {{this.failedMessage}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success"
+                  [disabled]="!telephone.valid || !age.valid || (userInfo.telephone !=null && !userInfo.telephone.match(this.regTelephone))"
+                  (click)="completerProfil(userInfo)"
+          >Valider
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

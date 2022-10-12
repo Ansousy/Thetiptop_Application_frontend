@@ -1,0 +1,45 @@
+<div class="container bas">
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h1 title="réinialiser mot de passe" class="text-black">Réinitilaiser mot de passe </h1>
+      </div>
+      <div class="card-body">
+        <div class="col-sm-12 col-md-7 col-lg-5 mx-auto pr-2 pl-2">
+          <form name="form" (ngSubmit)="f.valid  && onResetPassword()" #f="ngForm" novalidate>
+            <div class="mb-4 text-reinitialisation ">
+              Réinitialisation de votre mot de passe .
+            </div>
+            <label class="form-label" for="passsword">Nouveau mot de passe  : </label>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" ngModel name="newpassword" [(ngModel)]="form.newpassword" #password="ngModel"
+                     placeholder="mot de passe" minlength="6"  required>
+              <span class="input-group-text"><i class="fas fa-key "></i></span>
+            </div>
+            <div *ngIf="f.submitted && password.invalid">
+              <div *ngIf="password.errors.minlength"  class="danger"> <i class="fas fa-times"></i>* Le mot de passe doit comporter 6 caractéres au minimum </div>
+              <span *ngIf="password.errors.required" class="danger">* Le mot de passe est obliatoire </span>
+            </div>
+           <!-- (keyup)="verification($event)-->
+            <label>Confirmation du mot de passe  : </label>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" ngModel name="confirmpassword"  [(ngModel)]="form.confirmpassword"  #confirmpassword="ngModel"
+                   placeholder="confirmation du mot de passe"  required (keyup)="verification($event)" >
+                <span class="input-group-text" ><i class="fas fa-key "></i></span>
+            </div>
+            <div *ngIf="f.submitted && confirmpassword.invalid">
+              <span *ngIf="confirmpassword.errors.required" class="danger">* Veuillez confirmer le mot de passe </span>
+            </div>
+            <div *ngIf="this.correctMessage" style="color:green"><i class="fas fa-check"></i> Les deux mots de passe sont corrects</div>
+            <div *ngIf="this.errorConfirmation" style="color:red" ><i class="fas fa-times"></i> Les deux mots de passe ne correspondent pas</div>
+
+            <div class="mb-4">
+              <button type="submit" class="btn btn-primary ">Réinitialiser </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

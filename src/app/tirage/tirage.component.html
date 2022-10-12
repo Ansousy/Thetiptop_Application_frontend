@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h1 class="modal-title">Le grand Gagnant d'une valeur de 360 euros et
+    d'un an de thé :</h1>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body" *ngIf="gain">
+  <div>
+    <div>
+      <label class="form-label"> Monsieur : </label>
+      {{ gain.user.nom + " " + gain.user.prenom }}
+    </div>
+    <div>
+      <label class="form-label"> Email : </label> {{gain.user.login }}
+    </div>
+  </div>
+  <div>
+    <label class="form-label"> Téléphone : </label> {{gain.user.telephone }}
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="tirageAuSort()">Tirage</button>
+  <button type="button" class="btn btn-info" (click)="activeModal.close('Fermer')">Fermer</button>
+</div>

@@ -1,0 +1,31 @@
+version: '3.8'
+networks:
+  private:
+    external:
+      name: private
+  web:
+    external:
+      name: web
+
+services:
+  #----------------------
+  #--- FRONTEND SSR -----
+  #----------------------
+  develop-frontend:
+    image: elmas19/frontend-develop:2.0.1-rc2
+    environment:
+      ENV_NAME: develop
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: frontend-develop
+    networks:
+      - web
+      - private
+    user: 0:0
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.develop-frontend.entrypoints=websecure"
+      - traefik.http.routers.develop-frontend.rule=Host(`develop.dsp-archiweb21-ah-es-ag-hk.fr`)
+      - traefik.http.services.develop-frontend.loadbalancer.server.port=4000
+      - "traefik.http.routers.develop-frontend.tls.certresolver=lets-encr"
+    restart: always

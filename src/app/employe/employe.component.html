@@ -1,0 +1,96 @@
+<!--
+<h4>Content from Server</h4>
+<div *ngIf="userInfo">
+  <p>nom: <strong>{{userInfo.nom}}</strong></p>
+  <p>login: <strong>{{userInfo.login}}</strong></p>
+</div>
+{{board}}
+{{errorMessage}}
+-->
+
+<div class="container bas">
+  <div class="row ">
+    <!-- Draggable Without Images card start -->
+    <div class="card">
+      <div class="card-body">
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto pr-2 pl-2">
+          <app-infos-game ></app-infos-game>
+          <!--  historique des gains-->
+          <div class="row m-t-20 m-b-20 ">
+            <div class="col-md-5">
+              <h1 title="historique des gains" class="card-title">Historique des Gains</h1>
+            </div>
+
+            <div class="col-md-7">
+              <div class="input-group">
+                <input class="" type="text" class="recherche"   [(ngModel)]="ticket"
+                       placeholder="Rechercher par ticket ">
+                <input type="text"  class="recherche"  [(ngModel)]="nom"  name="nom"
+                       placeholder="Rechercher par nom"  />
+
+                    <span class="input-group-text bg-transparent clickable" (click)="filtrerNomEtLibelle()">
+                      <span>filtrer</span>
+                    </span>
+                    <span class="input-group-text bg-transparent clickable">
+                      <i class="fa fa-sync fa-lg" (click)="deleteFilter()"></i>
+                    </span>
+              </div>
+            </div>
+          </div>
+          <div class="responsive-table-line" style="margin:0px auto;">
+            <table>
+              <thead>
+              <tr>
+                <th>Ticket</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Libellé</th>
+                <th>Téléphone</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th (click)="sort('statut')">Statut &nbsp;&nbsp;<i class="fa fa-sort"></i></th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let gain of gains?.gains | orderBy: cle : reverse  | paginate:
+                  {itemsPerPage:size,currentPage:page,totalItems:counts} ">
+                <td data-title="ticket">{{gain.ticket.numero_ticket}}</td>
+                <td data-title="Nom">{{gain.user.nom}}</td>
+                <td data-title="Prénom">{{gain.user.prenom}}</td>
+                <td data-title="Libellé">{{gain.libelle}}</td>
+                <td data-title="télephone">{{gain.user.telephone}}</td>
+                <td data-title="Date">{{gain.date | date:"dd-MM-yyy HH:mm:ss"}}</td>
+                <td data-title="Email">{{gain.user.login}}</td>
+                <td data-title="Statut" *ngIf="gain.reception == 1"><span class="livrer"> Réceptionné</span></td>
+                <td data-title="Statut" *ngIf="gain.reception == 0"><span class="non-livrer">Non Réceptionné </span>
+                  <td data-title="Action">
+                  <button (click)="validerReception(gain)" *ngIf="gain.reception == 0" class="btn btn-xs btn-warning">
+                    <em> confirmer </em></button>
+                  <button (click)="infirmerReception(gain)" *ngIf="gain.reception == 1" class="btn btn-xs btn-info">
+                    <em> infirmer </em></button>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+            <div class="mt-4 pagination">
+              <pagination-controls (pageChange)="handlePageChange($event)"
+                                   responsive="true"
+                                   previousLabel="Précédent"
+                                   nextLabel="Suivant"
+                                   responsive="true">
+
+              </pagination-controls>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

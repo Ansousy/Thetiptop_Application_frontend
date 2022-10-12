@@ -1,0 +1,80 @@
+<form name="form" (ngSubmit)="f.form.valid && createUser()" #f="ngForm" novalidate>
+  <div class="modal-header">
+    <h3>Nouvel utilisateur</h3>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group mb-3 ">
+      <label class="form-label" for="nom">Nom</label>
+      <input type="text" class="form-control" name="nom" [(ngModel)]="user.nom" #nom="ngModel"
+             placeholder="Nom" required/>
+      <div *ngIf="f.submitted && nom.invalid">
+        <div *ngIf="nom.errors.required"> * Champs requis</div>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label" for="prenom">Prénom</label>
+      <input type="text" class="form-control" name="prenom" [(ngModel)]="user.prenom" #prenom="ngModel"
+             placeholder="Prénom" required/>
+      <div *ngIf="f.submitted && prenom.invalid">
+        <div *ngIf="prenom.errors.required"> * Champs requis</div>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label" for="telephone">Téléphone</label>
+      <input type="text" class="form-control" name="telephone" [(ngModel)]="user.telephone" #telephone="ngModel"
+             required placeholder="Numéro de téléphone"/>
+      <div *ngIf="f.submitted && telephone.invalid">
+        <div *ngIf="telephone.errors.required"> * Champs requis</div>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label" for="age">Age</label>
+      <input type="number" min="5" class="form-control" name="age" [(ngModel)]="user.age" #age="ngModel"
+             placeholder="Age" required/>
+      <div *ngIf="f.submitted && age.invalid">
+        <div *ngIf="age.errors.required"> * Champs requis, veuillez ajouter votre âge</div>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label" for="login">Login</label>
+      <input type="email" class="form-control" name="login" [(ngModel)]="user.login" #login="ngModel"
+             placeholder="Login" required/>
+      <div *ngIf="f.submitted && login.invalid">
+        <div *ngIf="login.errors.required"> * Champs requis</div>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label" for="password">Mot de passe</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel"
+             required minlength="6" placeholder="mot de passe"/>
+      <div *ngIf="f.submitted && password.invalid">
+        <div *ngIf="password.errors.required">* mot de passe éxigé</div>
+        <div *ngIf="password.errors.minlength"> * minimum 6 caracteres</div>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label" for="roles">Roles</label>
+      <select name="roles" [(ngModel)]="user.role" class="form-select" #role="ngModel" required>
+        <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+      </select>
+      <div *ngIf="f.submitted && role.invalid">
+        <div *ngIf="role.errors.required"> * Champs requis</div>
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi-exclamation-octagon-fill" style="color: #e80909"></i>
+        {{this.message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('fermer')">Annuler</button>
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </div>
+</form>

@@ -1,0 +1,217 @@
+<div class="container bas">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto pr-2 pl-2">
+          <div class="row">
+            <!-- edition profil utilisateur -->
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mb-2">
+              <div class="card  mb-2">
+                <div class="card-header">
+                  <div class="font-weight-bold text-black  text-uppercase mb-1">Edition profil</div>
+                </div>
+                <div class="card-body">
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <label for="nom" class="mb-0 form-label">Nom</label>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                      <input type="text" class="form-control" [(ngModel)]="userinfo.nom" #nom="ngModel" minlength="2"
+                             required/>
+                      <div *ngIf="nom.invalid">
+                        <div *ngIf="nom.errors.required"> * Champs requis</div>
+                        <div *ngIf="nom.errors.minlength"> * minimum 2 caractéres</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <label for="prenom" class="mb-0 form-label">Prénom</label>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                      <input type="text" class="form-control" [(ngModel)]="userinfo.prenom" #prenom="ngModel"
+                             minlength="2" required/>
+                      <div *ngIf="prenom.invalid">
+                        <div *ngIf="prenom.errors.required"> * Champs requis</div>
+                        <div *ngIf="prenom.errors.minlength"> * minimum 2 caractéres</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <label for="login" class="mb-0">Login</label>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                      <input type="email" class="form-control" [(ngModel)]="userinfo.login" #login="ngModel" required/>
+                      <div *ngIf="login.invalid">
+                        <div *ngIf="login.errors.required"> * Champs requis</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <label for="age" class="mb-0">Age</label>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                      <input type="number" class="form-control" [(ngModel)]="userinfo.age" #age="ngModel"
+                             min="5" required/>
+                      <div *ngIf="age.invalid">
+                        <div *ngIf="age.errors.required"> * Champs requis</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <label for="telephone" class="mb-0">Téléphone</label>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                      <input type="text" class="form-control" [(ngModel)]="userinfo.telephone" #telephone="ngModel"
+                             required/>
+                      <div *ngIf="telephone.invalid">
+                        <div *ngIf="telephone.errors.required"> * Champs requis</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6 text-secondary">
+                      <button (click)="updateProfile()" class="btn btn-space  btn-success">Editer</button>
+                      <a routerLink="/user">
+                        <button type="button" class="btn btn-space btn-primary">Retour</button>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                      <div *ngIf="isUpdatedFailed" class="alert alert-danger alert-dismissible fade show  mt-2"
+                           role="alert">
+                        <i class="bi-exclamation-octagon-fill" style="color: #e80909"></i>
+                        {{ errorMessage }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div *ngIf="isValid" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        <div *ngFor="let err of validateError">
+                          <i class="bi-exclamation-octagon-fill" style="color: #e80909"></i>
+                          {{ err.msg }}
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+            <!-- edition password -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
+              <div class="card  mb-2">
+                <div class="card-header">
+                  <div class="font-weight-bold text-black text-uppercase mb-1"> Réinitialisation du mot de passe</div>
+                </div>
+                <div class="card-body">
+                  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid  && changePassword();" novalidate>
+
+                    <div *ngIf="isSuccess">
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <i class="bi-check-circle-fill" style="color:#198754"> </i>
+                        Votre mot de passe a été réinitialisé avec succés.
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <label class="mb-0 form-label">Nouveau mot de passe</label>
+                      </div>
+                      <div class="col-sm-6 input-group mb-3 text-secondary">
+                        <input type="password" class="form-control" ngModel name="newpassword"
+                               [(ngModel)]="form.newpassword" #password="ngModel"
+                               minlength="6" required>
+                        <span class="input-group-text"><i class="fas fa-key "></i></span>
+                      </div>
+                      <div *ngIf="f.submitted && password.invalid">
+                        <div *ngIf="password.errors.minlength"><span class="danger">*</span> Le mot de passe doit
+                          comporter 6 caractéres au minimum
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- (keyup)="verification($event)-->
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <label class="mb-0 form-label"> Confirmation du mot de passe</label>
+                      </div>
+                      <div class="col-sm-6 input-group mb-3 text-secondary">
+                        <input type="password" class="form-control" ngModel name="confirmpassword"
+                               [(ngModel)]="form.confirmpassword" #confirmpassword="ngModel" minlength="6"
+                               required>
+                        <span class="input-group-text"><i class="fas fa-key "></i></span>
+                      </div>
+                      <div *ngIf="f.submitted && confirmpassword.invalid">
+                        <div *ngIf="confirmpassword.errors.minlength"><span class="danger">*</span> Le mot de passe doit
+                          comporter 6 caractéres au minimum
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-3 text-secondary">
+                        <button type="submit" class="btn btn-success ">Réinitialiser</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- désinscription newsletter -->
+              <div class="card  mb-2">
+                <div class="card-header">
+                  <div class="font-weight-bold text-black text-uppercase mb-1"> Se désinscrire à notre newsletter
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div *ngIf="unSubscribe">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <i class="bi-check-circle-fill" style="color:#198754"></i>
+                        Désinscription confirmée, vous ne recevrez plus de nos nouvelles.
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <label for="adresse_email" class="form-label">Adresse email</label>
+                    </div>
+                    <div class="col-sm-6 input-group mb-3 ">
+                      <input type="email" class="form-control" [(ngModel)]="adresse_email"
+                             id="adresse_email" placeholder="Votre adresse e-mail" required="required">
+                      <span class="input-group-text"><i class="far fa-envelope "></i></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6 text-secondary">
+                      <button [disabled]="!adresse_email.match(this.pattern)"
+                              (click)="unSubscribeNewsletter(adresse_email)" class="btn btn-success  ">
+                        Se désinscrire
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

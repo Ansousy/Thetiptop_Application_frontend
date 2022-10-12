@@ -1,0 +1,103 @@
+<div class="container bas">
+  <div class="row ">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto pr-2 pl-2">
+          <app-infos-jeux-admin></app-infos-jeux-admin>
+
+          <!--  graphique -->
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-xs-6 mb-2">
+              <div class="card  mb-2">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header">
+                  <div class="font-weight-bold text-black text-uppercase mb-1">Répartitions des tickets gagnés</div>
+                </div>
+                <!-- Card Body -->
+
+                <div class="card-body">
+                  <div id="piechart_div"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-6 mb-2">
+              <div class="card  mb-2">
+                <div class="card-header">
+                  <div class="font-weight-bold text-black text-uppercase mb-1">évolution des Gains</div>
+                </div>
+                <div class="card-body">
+                  <div id="columnchart_div"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--  historique des gains-->
+          <div class="row m-t-20 m-b-20 ">
+            <div class="col-md-5">
+              <h1 class="card-title" title="Historique des gains">Historique des Gains</h1>
+            </div>
+
+            <div class="col-md-7">
+              <div class="input-group">
+                <input class="" type="text" class="recherche"   [(ngModel)]="libelle"
+                       placeholder="Rechercher par libellé ">
+                <input type="text"  class="recherche"  [(ngModel)]="nom"  name="nom"
+                       placeholder="Rechercher par nom"  />
+
+                    <span class="input-group-text bg-transparent clickable" (click)="filtrerNomEtLibelle()">
+                      <span>filtrer</span>
+                    </span>
+                    <span class="input-group-text bg-transparent clickable">
+                      <i class="fa fa-sync fa-lg" (click)="deleteFilter()"></i>
+                    </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="responsive-table-line" style="margin:0px auto;">
+            <table>
+              <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Libellé</th>
+                <th>Téléphone</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th (click)="sort('reception')">Statut &nbsp;&nbsp;<i class="fa fa-sort"></i></th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let gain of gains?.gains | orderBy: cle : reverse  | paginate:
+                  {itemsPerPage:size,currentPage:page,totalItems:counts} ">
+                <td data-title="Nom">{{gain.user.nom}}</td>
+                <td data-title="Prénom">{{gain.user.prenom}}</td>
+                <td data-title="Libellé">{{gain.libelle}}</td>
+                <td data-title="télephone">{{gain.user.telephone}}</td>
+                <td data-title="Date">{{gain.date | date:"dd-MM-yyy HH:mm:ss"}}</td>
+                <td data-title="Email">{{gain.user.login}}</td>
+                <td data-title="Statut" *ngIf="gain.reception == 1"><span class="livrer"> Réceptionné</span></td>
+                <td data-title="Statut" *ngIf="gain.reception == 0"><span class="non-livrer">Non Réceptionné </span>
+                <td data-title="Action">
+                  <a (click)="envoyerEmail(gain.id)" class="clickable"><i class="fas fa-send font-fas"></i></a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="mt-4 pagination">
+              <pagination-controls (pageChange)="handlePageChange($event)"
+                                   responsive="true"
+                                   previousLabel="Précédent"
+                                   nextLabel="Suivant"
+                                   responsive="true">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

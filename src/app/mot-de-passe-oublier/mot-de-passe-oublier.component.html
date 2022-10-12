@@ -1,0 +1,35 @@
+<div class="container bas">
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h1 title="reinitialiser mot de passe" class="text-black">Réinitilaiser mot de passe </h1>
+      </div>
+      <div class="card-body">
+        <div class="col-sm-12 col-md-7 col-lg-5 mx-auto pr-2 pl-2">
+          <form name="form" (ngSubmit)="f.valid  && onSendEmail(f.value)" #f="ngForm" novalidate>
+            <div class="mb-4 text-reinitialisation ">
+              Entrez votre adresse e-mail et nous vous enverrons le lien pour réinitialiser votre mot de passe.
+            </div>
+            <label class="form-label" for="email" >Adresse email : </label>
+
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" ngModel name="login" #email="ngModel"
+                     placeholder="Entrez votre adresse e-mail" required>
+                <span class="input-group-text" ><i class="fas fa-envelope "></i></span>
+            </div>
+
+            <div *ngIf="f.submitted && email.invalid">
+              <span *ngIf="email.errors.required" class="danger">Entrez une adresse email utilisateur valide</span>
+            </div>
+
+            <div class="mb-4">
+              <button type="submit" class="btn btn-primary ">Envoyer  <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

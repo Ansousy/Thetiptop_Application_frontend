@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 91.0.4472 (Windows 10.0.0)" package="" timestamp="2021-08-24T14:54:02" id="0" hostname="EPL60024533" tests="28" errors="0" failures="1" time="2.652">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36"/>
+  </properties>
+  <testcase name="MotDePasseOublierComponent should create" time="0.359" classname="Chrome_91_0_4472_(Windows_10_0_0).MotDePasseOublierComponent"/>
+  <testcase name="UserService should be created" time="0.019" classname="Chrome_91_0_4472_(Windows_10_0_0).UserService"/>
+  <testcase name="RegisterComponent should create" time="0.295" classname="Chrome_91_0_4472_(Windows_10_0_0).RegisterComponent"/>
+  <testcase name="UserComponent should create" time="0.079" classname="Chrome_91_0_4472_(Windows_10_0_0).UserComponent"/>
+  <testcase name="TokenStorageService should be created" time="0.01" classname="Chrome_91_0_4472_(Windows_10_0_0).TokenStorageService"/>
+  <testcase name="JouerService should be created" time="0.009" classname="Chrome_91_0_4472_(Windows_10_0_0).JouerService"/>
+  <testcase name="AuthService should be created" time="0.008" classname="Chrome_91_0_4472_(Windows_10_0_0).AuthService"/>
+  <testcase name="AppComponent should create the app" time="0.096" classname="Chrome_91_0_4472_(Windows_10_0_0).AppComponent"/>
+  <testcase name="ConfirmationNewsletterComponent should create" time="0.023" classname="Chrome_91_0_4472_(Windows_10_0_0).ConfirmationNewsletterComponent"/>
+  <testcase name="AjouterUtilisateurComponent should create" time="0.111" classname="Chrome_91_0_4472_(Windows_10_0_0).AjouterUtilisateurComponent"/>
+  <testcase name="ProfilComponent should create" time="0.017" classname="Chrome_91_0_4472_(Windows_10_0_0).ProfilComponent"/>
+  <testcase name="ProfilComponent should render title in a p tag" time="0.013" classname="Chrome_91_0_4472_(Windows_10_0_0).ProfilComponent"/>
+  <testcase name="ReinitialiserMotDePasseComponent should create" time="0.079" classname="Chrome_91_0_4472_(Windows_10_0_0).ReinitialiserMotDePasseComponent"/>
+  <testcase name="EditionUtilisateurComponent should create" time="0.101" classname="Chrome_91_0_4472_(Windows_10_0_0).EditionUtilisateurComponent"/>
+  <testcase name="EmployeComponent should create" time="0.205" classname="Chrome_91_0_4472_(Windows_10_0_0).EmployeComponent"/>
+  <testcase name="ConfirmationInscriptionComponent should create" time="0.043" classname="Chrome_91_0_4472_(Windows_10_0_0).ConfirmationInscriptionComponent"/>
+  <testcase name="EmailingComponent should create" time="0.073" classname="Chrome_91_0_4472_(Windows_10_0_0).EmailingComponent"/>
+  <testcase name="AuthsecureGuard should be created" time="0.008" classname="Chrome_91_0_4472_(Windows_10_0_0).AuthsecureGuard"/>
+  <testcase name="HomeComponent should create" time="0.187" classname="Chrome_91_0_4472_(Windows_10_0_0).HomeComponent"/>
+  <testcase name="HomeComponent should render title in a h1 tag" time="0.075" classname="Chrome_91_0_4472_(Windows_10_0_0).HomeComponent"/>
+  <testcase name="GainComponent should create" time="0.138" classname="Chrome_91_0_4472_(Windows_10_0_0).GainComponent"/>
+  <testcase name="TirageComponent should create" time="0.094" classname="Chrome_91_0_4472_(Windows_10_0_0).TirageComponent"/>
+  <testcase name="InfosJeuxAdminComponent should create" time="0.224" classname="Chrome_91_0_4472_(Windows_10_0_0).InfosJeuxAdminComponent"/>
+  <testcase name="AdminComponent should create" time="0.143" classname="Chrome_91_0_4472_(Windows_10_0_0).AdminComponent"/>
+  <testcase name="LoginComponent should create" time="0.097" classname="Chrome_91_0_4472_(Windows_10_0_0).LoginComponent">
+    <failure type="">Uncaught ReferenceError: google is not defined thrown
+</failure>
+    <failure type="">Error: Can't resolve all parameters for GoogleLoginProvider: (?).
+    at getUndecoratedInjectableFactory (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17352:1)
+    at injectableDefOrInjectorDefFactory (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17336:1)
+    at providerToFactory (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17404:1)
+    at providerToRecord (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17386:1)
+    at R3Injector.processProvider (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17202:1)
+    at http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17181:1
+    at http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:1400:1
+    at &lt;Jasmine&gt;
+    at deepForEach (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:1400:1)
+    at R3Injector.processInjectorType (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17177:1)
+</failure>
+    <failure type="">Error: Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/_karma_webpack_/src/app/login/login.component.spec.ts:30:23)
+    at ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:364:1)
+    at AsyncTestZoneSpec.push../node_modules/zone.js/dist/zone-testing.js.AsyncTestZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-testing.js:1032:1)
+</failure>
+  </testcase>
+  <testcase name="ListeUtilisateursComponent should create" time="0.066" classname="Chrome_91_0_4472_(Windows_10_0_0).ListeUtilisateursComponent"/>
+  <testcase name="InfosGameComponent should create" time="0.059" classname="Chrome_91_0_4472_(Windows_10_0_0).InfosGameComponent"/>
+  <testcase name="AccesRefuseComponent should create" time="0.021" classname="Chrome_91_0_4472_(Windows_10_0_0).AccesRefuseComponent"/>
+  <system-out>
+    <![CDATA[Chrome 91.0.4472 (Windows 10.0.0) WARN: ''app-infos-game' is not a known element:
+1. If 'app-infos-game' is an Angular component, then verify that it is part of this module.
+2. If 'app-infos-game' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: ''router-outlet' is not a known element:
+1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 91.0.4472 (Windows 10.0.0) LOG: Object{}
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: ''app-infos-game' is not a known element:
+1. If 'app-infos-game' is an Angular component, then verify that it is part of this module.
+2. If 'app-infos-game' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 91.0.4472 (Windows 10.0.0) LOG: null
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: ''progress-bar' is not a known element:
+1. If 'progress-bar' is an Angular component, then verify that it is part of this module.
+2. If 'progress-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: 'Can't bind to 'progress' since it isn't a known property of 'progress-bar'.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: 'Can't bind to 'color-degraded' since it isn't a known property of 'progress-bar'.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: ''app-infos-jeux-admin' is not a known element:
+1. If 'app-infos-jeux-admin' is an Angular component, then verify that it is part of this module.
+2. If 'app-infos-jeux-admin' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: 'jQuery.Deferred exception: google is not defined', 'ReferenceError: google is not defined
+    at HTMLDocument.<anonymous> (http://localhost:9876/_karma_webpack_/src/app/admin/admin.component.ts:81:7)
+    at mightThrow (http://localhost:9876/absoluteC:/thetiptop/frontend/node_modules/karma-jquery/jquery/jquery-3.2.1.js?481a2ffd3f04c9bd3434f2798f3cee263b0d90a2:3583:29)
+    at process (http://localhost:9876/absoluteC:/thetiptop/frontend/node_modules/karma-jquery/jquery/jquery-3.2.1.js?481a2ffd3f04c9bd3434f2798f3cee263b0d90a2:3651:12)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:399:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/zone-testing.js.ProxyZoneSpec.onInvokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-testing.js:323:1)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:398:1)
+    at Object.onInvokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:273:1)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:398:1)
+    at Object.onInvokeTask (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:41686:1)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:398:1)', undefined
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: 'jQuery.Deferred exception: google is not defined', 'ReferenceError: google is not defined
+    at HTMLDocument.<anonymous> (http://localhost:9876/_karma_webpack_/src/app/admin/admin.component.ts:121:7)
+    at mightThrow (http://localhost:9876/absoluteC:/thetiptop/frontend/node_modules/karma-jquery/jquery/jquery-3.2.1.js?481a2ffd3f04c9bd3434f2798f3cee263b0d90a2:3583:29)
+    at process (http://localhost:9876/absoluteC:/thetiptop/frontend/node_modules/karma-jquery/jquery/jquery-3.2.1.js?481a2ffd3f04c9bd3434f2798f3cee263b0d90a2:3651:12)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:399:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/zone-testing.js.ProxyZoneSpec.onInvokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-testing.js:323:1)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:398:1)
+    at Object.onInvokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:273:1)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:398:1)
+    at Object.onInvokeTask (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:41686:1)
+    at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/node_modules/zone.js/dist/zone-evergreen.js:398:1)', undefined
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: 'Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: ''progress-bar' is not a known element:
+1. If 'progress-bar' is an Angular component, then verify that it is part of this module.
+2. If 'progress-bar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: 'Can't bind to 'progress' since it isn't a known property of 'progress-bar'.'
+,Chrome 91.0.4472 (Windows 10.0.0) WARN: 'Can't bind to 'color-degraded' since it isn't a known property of 'progress-bar'.'
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

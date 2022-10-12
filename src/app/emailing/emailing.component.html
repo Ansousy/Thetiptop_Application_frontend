@@ -1,0 +1,61 @@
+<div class="container bas">
+  <div class="row ">
+    <!-- Draggable Without Images card start -->
+    <div class="card">
+      <div class="card-header">
+        <h1 title="envoyer email">Envoyer Email</h1>
+      </div>
+      <div class="card-body">
+        <div class="col-sm-12 col-md-12 col-lg-7 mx-auto pr-2 pl-2">
+          <form (ngSubmit)="f.valid && Envoie(f.value)" #f="ngForm" novalidate>
+            <div class=" form-group row" *ngFor="let gains of gain">
+              <div class="col-md-12">
+                <div class="styled-input  ">
+                  <input type="text" class="wide" required ngModel name="objet"/>
+                  <label>Objet</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="styled-input col-md-4">
+                  <input type="text" name="nom" [(ngModel)]="gains.user.prenom" [(value)]="gains.user.prenom"/>
+                  <label>Nom</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="styled-input col-md-4">
+                  <input type="text" name="email" [(ngModel)]="gains.user.login " [(value)]="gains.user.login"/>
+                  <label>Email</label>
+                </div>
+              </div>
+
+
+              <div class="styled-input col-md-12  ">
+                <textarea class="wide" ngModel name="message" #message="ngModel" required></textarea>
+                <label>Message</label>
+              </div>
+              <div *ngIf="f.submitted && message.invalid">
+                <div *ngIf="message.errors.required" class="alert alert-info">* Message obligatoire</div>
+              </div>
+
+            </div>
+
+            <div class="form-group  row">
+              <div class="col-md-3 mb-3">
+                <button class="btn form-control btn-primary "><i class="fas fa-send "></i> Envoyer</button>
+              </div>
+
+              <div class="col-md-3 mtop-2">
+                <a routerLink="/admin">
+                  <button type="button" class="btn form-control btn-info "><span>Retour </span></button>
+                </a>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
